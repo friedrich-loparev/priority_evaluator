@@ -4,11 +4,14 @@ class Task:
     urgency: int
     priority: float
 
-    def __init__(self, name: str, importance: int = None, urgency: int = None, priority: float = None):
+    def __init__(self, name: str, importance: int = None, urgency: int = None):
         self.name = name
         self.importance = importance
         self.urgency = urgency
-        self.priority = (self.importance + self.urgency) / 2
+        if self.importance and self.urgency:
+            self.priority = (self.importance + self.urgency) / 2
+        else:
+            self.priority = None
 
     def __repr__(self):
         return f"{self.name}: " \
@@ -17,5 +20,8 @@ class Task:
                f"\nTotal priority: {self.priority}"
 
 
-task_1 = Task("Task 1", 5, 8)
-print(task_1)
+class PositiveHabit(Task):
+    pass
+
+class NegativeHabit(Task):
+    pass
